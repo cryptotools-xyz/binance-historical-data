@@ -21,10 +21,14 @@
                       <li>Avg low: {{ $avgLow }}</li>
                   </ul>
                   <ul>
-                        <li>Median open: {{ $medianOpen }}</li>
-                        <li>Median close: {{ $medianClose }}</li>
-                        <li>Median high: {{ $medianHigh }}</li>
-                        <li>Median low: {{ $medianLow }}</li>
+                      <li>Median open: {{ $medianOpen }}</li>
+                      <li>Median close: {{ $medianClose }}</li>
+                      <li>Median high: {{ $medianHigh }}</li>
+                      <li>Median low: {{ $medianLow }}</li>
+                  </ul>
+                  <ul>
+                      <li>Max high: {{ $maxHigh }}</li>
+                      <li>Min low: {{ $minLow }}</li>
                   </ul>
               </div>
           </div>

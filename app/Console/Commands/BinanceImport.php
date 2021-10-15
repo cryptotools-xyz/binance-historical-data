@@ -39,7 +39,7 @@ class BinanceImport extends Command
      */
     public function handle()
     {
-        $symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "ADAUSDT", "SOLUSDT", "DOTUSDT"];
+        $symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "ADAUSDT", "SOLUSDT", "DOTUSDT", "LINKUSDT", "UNIUSDT", "LUNAUSDT"];
 
         foreach($symbols as $symbol) 
         {

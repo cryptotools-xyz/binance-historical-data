@@ -9,7 +9,7 @@ class SymbolController extends Controller
 {
     public function show($id)
     {
-        $number = 15;
+        $number = 90;
 
         $data = Kline::where('symbol', $id)->orderBy('open_time', 'desc')->take($number)->get();
 
@@ -23,6 +23,9 @@ class SymbolController extends Controller
         $medianLow = Kline::where('symbol', $id)->orderBy('open_time', 'desc')->limit($number)->get()->median('low');
         $medianClose = Kline::where('symbol', $id)->orderBy('open_time', 'desc')->limit($number)->get()->median('close');
 
+        $maxHigh = Kline::where('symbol', $id)->orderBy('open_time', 'desc')->limit($number)->get()->max('high');
+        $minLow = Kline::where('symbol', $id)->orderBy('open_time', 'desc')->limit($number)->get()->min('low');
+
         return view('symbols.show', [
             'data' => $data,
 
@@ -34,7 +37,10 @@ class SymbolController extends Controller
             'medianOpen' => $medianOpen,
             'medianHigh' => $medianHigh,
             'medianLow' => $medianLow,
-            'medianClose' => $medianClose
+            'medianClose' => $medianClose,
+
+            'maxHigh' => $maxHigh,
+            'minLow' => $minLow
         ]);
     }
 }
