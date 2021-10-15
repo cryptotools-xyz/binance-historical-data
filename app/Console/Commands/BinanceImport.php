@@ -52,7 +52,7 @@ class BinanceImport extends Command
             $this->info("Pulled $count from /api/v3/klines for $symbol");
 
             foreach($data as $item) {
-                Kline::create([
+                Kline::updateOrCreate([
                     'symbol' => $symbol,
                     'open_time' =>  date("Y-m-d H:i:s", $item[0] / 1000), //source: https://stackoverflow.com/questions/39569312/epoch-unix-timestamp-conversion-in-php-and-mysql-is-not-working-properly
                     'open' => $item[1],
