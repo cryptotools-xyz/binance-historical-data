@@ -16,20 +16,20 @@
             <div class="row">
                 <div class="col">
                     <ul>
-                        <li>Avg open: {{ $avgOpen }}</li>
-                        <li>Avg close: {{ $avgClose }}</li>
-                        <li>Avg high: {{ $avgHigh }}</li>
-                        <li>Avg low: {{ $avgLow }}</li>
+                        <li>Avg open: {{ rtrim($avgOpen, '0') }}</li>
+                        <li>Avg close: {{ rtrim($avgClose, '0') }}</li>
+                        <li>Avg high: {{ rtrim($avgHigh, '0') }}</li>
+                        <li>Avg low: {{ rtrim($avgLow, '0') }}</li>
                     </ul>
                     <ul>
-                        <li>Median open: {{ $medianOpen }}</li>
-                        <li>Median close: {{ $medianClose }}</li>
-                        <li>Median high: {{ $medianHigh }}</li>
-                        <li>Median low: {{ $medianLow }}</li>
+                        <li>Median open: {{ rtrim($medianOpen, '0') }}</li>
+                        <li>Median close: {{ rtrim($medianClose, '0') }}</li>
+                        <li>Median high: {{ rtrim($medianHigh, '0') }}</li>
+                        <li>Median low: {{ rtrim($medianLow, '0') }}</li>
                     </ul>
                     <ul>
-                        <li>Max high: {{ $maxHigh }}</li>
-                        <li>Min low: {{ $minLow }}</li>
+                        <li>Max high: {{ rtrim($maxHigh, '0') }}</li>
+                        <li>Min low: {{ rtrim($minLow, '0') }}</li>
                     </ul>
                 </div>
             </div>
@@ -48,11 +48,11 @@
                 <?php $prevIndex = $key === 0 ? 0 : $key - 1; ?>
                 <tr>
                     <td>{{ $item->open_time }}</td>
-                    <td>{{ $item->open }}</td>
-                    <td class='<?php /*$data[$prevIndex]->high > $item->high ? "table-danger" : "table-success";*/ ?>'>{{ $item->high }}</td>
-                    <td class='<?php /*$data[$prevIndex]->low > $item->low ? "table-danger" : "table-success";*/ ?>'>{{ $item->low }}</td>
-                    <td class='<?php /*$data[$prevIndex]->close > $item->close ? "table-danger" : "table-success";*/ ?>'>{{ $item->close }}</td>
-                    <td>{{ $item->volume }}</td>
+                    <td>{{ rtrim($item->open, '0') }}</td>
+                    <td class='<?php /*$data[$prevIndex]->high > $item->high ? "table-danger" : "table-success";*/ ?>'>{{ rtrim($item->high, '0') }}</td>
+                    <td class='<?php /*$data[$prevIndex]->low > $item->low ? "table-danger" : "table-success";*/ ?>'>{{ rtrim($item->low, '0') }}</td>
+                    <td class='<?php /*$data[$prevIndex]->close > $item->close ? "table-danger" : "table-success";*/ ?>'>{{ rtrim($item->close, '0') }}</td>
+                    <td>{{ rtrim($item->volume, '0') }}</td>
                     <td>{{ $item->close_time }}</td>
                 </tr>
                 @endforeach

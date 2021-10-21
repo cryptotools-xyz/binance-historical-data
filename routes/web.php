@@ -16,4 +16,4 @@ use App\Http\Controllers\SymbolController;
 
 Route::view('/', 'welcome');
 
-Route::get('/symbols/{symbol}/{period}', [SymbolController::class, 'show']);
+Route::get('/symbols/{symbol}/{period?}', [SymbolController::class, 'show']);

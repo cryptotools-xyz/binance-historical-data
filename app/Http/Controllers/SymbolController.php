@@ -7,7 +7,7 @@ use App\Models\Kline;
 
 class SymbolController extends Controller
 {
-    public function show($symbol, $period)
+    public function show($symbol, $period = 1)
     {
         $number = $period;
 
@@ -31,15 +31,15 @@ class SymbolController extends Controller
             'period' => $period,
             'symbol' => $symbol,
 
-            'avgOpen' => $avgOpen,
-            'avgHigh' => $avgHigh,
-            'avgLow' => $avgLow,
-            'avgClose' => $avgClose,
+            'avgOpen' => $avgOpen < 1 ? number_format($avgOpen, 18) : $avgOpen,
+            'avgHigh' => $avgHigh < 1 ? number_format($avgHigh, 18) : $avgHigh,
+            'avgLow' => $avgLow < 1 ? number_format($avgLow, 18) : $avgLow,
+            'avgClose' => $avgClose < 1 ? number_format($avgClose, 18) : $avgClose,
 
-            'medianOpen' => $medianOpen,
-            'medianHigh' => $medianHigh,
-            'medianLow' => $medianLow,
-            'medianClose' => $medianClose,
+            'medianOpen' => $avgOpen < 1 ? number_format($medianOpen, 18) : $avgOpen,
+            'medianHigh' => $avgHigh < 1 ? number_format($medianHigh, 18) : $avgHigh,
+            'medianLow' => $avgLow < 1 ? number_format($medianLow, 18) : $avgLow,
+            'medianClose' => $avgClose < 1 ? number_format($medianClose, 18) : $avgClose,
 
             'maxHigh' => $maxHigh,
             'minLow' => $minLow

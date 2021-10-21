@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use App\Models\Kline;
+use Exception;
 
 class BinanceImport extends Command
 {
@@ -39,14 +40,28 @@ class BinanceImport extends Command
      */
     public function handle()
     {
-        $symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "ADAUSDT", "SOLUSDT", "DOTUSDT", "LINKUSDT", "UNIUSDT", "LUNAUSDT"];
+        $symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "ADAUSDT", "SOLUSDT", "XRPUSDT", "DOTUSDT", "DOGEUSDT", "LUNAUSDT", "UNIUSDT", "LTCUSDT", "AVAXUSDT", "LINKUSDT", "BCHUSDT", "ALGOUSDT", "SHIBUSDT"];
 
         foreach($symbols as $symbol) 
         {
+            /**
+             * Get data
+             */
             $response = Http::get("https://api.binance.com/api/v3/klines?symbol=$symbol&interval=1d");
 
             $data = $response->json();
 
+            /**
+             * Handle error
+             */
+            if(isset($data["msg"]) && $data["msg"] === "Invalid symbol.") {
+                $this->info("Invalid symbol $symbol");
+                continue;
+            }
+
+            /**
+             * Save to db
+             */
             $count = count($data);
 
             $this->info("Pulled $count from /api/v3/klines for $symbol");
@@ -66,6 +81,7 @@ class BinanceImport extends Command
 
             $this->info("done...");
         }
+        
 
         return Command::SUCCESS;
     }
