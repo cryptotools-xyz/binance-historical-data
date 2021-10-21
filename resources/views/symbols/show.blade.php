@@ -12,49 +12,51 @@
   </head>
   <body>
       <div class="container">
-          <div class="row">
-              <div class="col">
-                  <ul>
-                      <li>Avg open: {{ $avgOpen }}</li>
-                      <li>Avg close: {{ $avgClose }}</li>
-                      <li>Avg high: {{ $avgHigh }}</li>
-                      <li>Avg low: {{ $avgLow }}</li>
-                  </ul>
-                  <ul>
-                      <li>Median open: {{ $medianOpen }}</li>
-                      <li>Median close: {{ $medianClose }}</li>
-                      <li>Median high: {{ $medianHigh }}</li>
-                      <li>Median low: {{ $medianLow }}</li>
-                  </ul>
-                  <ul>
-                      <li>Max high: {{ $maxHigh }}</li>
-                      <li>Min low: {{ $minLow }}</li>
-                  </ul>
-              </div>
-          </div>
-        <table class="table">
-            <tr>
-                <th>Open time</th>
-                <th>Open</th>
-                <th>High</th>
-                <th>Low</th>
-                <th>Close</th>
-                <th>Volume</th>
-                <th>Close time</th>
-            </tr>
-            @foreach($data as $key => $item)
-            <?php $prevIndex = $key === 0 ? 0 : $key - 1; ?>
-            <tr>
-                <td>{{ $item->open_time }}</td>
-                <td>{{ $item->open }}</td>
-                <td class='<?php /*$data[$prevIndex]->high > $item->high ? "table-danger" : "table-success";*/ ?>'>{{ $item->high }}</td>
-                <td class='<?php /*$data[$prevIndex]->low > $item->low ? "table-danger" : "table-success";*/ ?>'>{{ $item->low }}</td>
-                <td class='<?php /*$data[$prevIndex]->close > $item->close ? "table-danger" : "table-success";*/ ?>'>{{ $item->close }}</td>
-                <td>{{ $item->volume }}</td>
-                <td>{{ $item->close_time }}</td>
-            </tr>
-            @endforeach
-        </table>
+            <h1>Showing last {{ $period }} of {{ $symbol }}</h1>
+            <div class="row">
+                <div class="col">
+                    <ul>
+                        <li>Avg open: {{ $avgOpen }}</li>
+                        <li>Avg close: {{ $avgClose }}</li>
+                        <li>Avg high: {{ $avgHigh }}</li>
+                        <li>Avg low: {{ $avgLow }}</li>
+                    </ul>
+                    <ul>
+                        <li>Median open: {{ $medianOpen }}</li>
+                        <li>Median close: {{ $medianClose }}</li>
+                        <li>Median high: {{ $medianHigh }}</li>
+                        <li>Median low: {{ $medianLow }}</li>
+                    </ul>
+                    <ul>
+                        <li>Max high: {{ $maxHigh }}</li>
+                        <li>Min low: {{ $minLow }}</li>
+                    </ul>
+                </div>
+            </div>
+            <hr/>
+            <table class="table">
+                <tr>
+                    <th>Open time</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                    <th>Volume</th>
+                    <th>Close time</th>
+                </tr>
+                @foreach($data as $key => $item)
+                <?php $prevIndex = $key === 0 ? 0 : $key - 1; ?>
+                <tr>
+                    <td>{{ $item->open_time }}</td>
+                    <td>{{ $item->open }}</td>
+                    <td class='<?php /*$data[$prevIndex]->high > $item->high ? "table-danger" : "table-success";*/ ?>'>{{ $item->high }}</td>
+                    <td class='<?php /*$data[$prevIndex]->low > $item->low ? "table-danger" : "table-success";*/ ?>'>{{ $item->low }}</td>
+                    <td class='<?php /*$data[$prevIndex]->close > $item->close ? "table-danger" : "table-success";*/ ?>'>{{ $item->close }}</td>
+                    <td>{{ $item->volume }}</td>
+                    <td>{{ $item->close_time }}</td>
+                </tr>
+                @endforeach
+            </table>
       </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
